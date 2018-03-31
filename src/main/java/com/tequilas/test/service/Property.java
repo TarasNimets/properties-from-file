@@ -1,6 +1,7 @@
 package com.tequilas.test.service;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Properties;
 
@@ -34,7 +35,11 @@ public final class Property {
                     field.set(null, Boolean.parseBoolean(properties.getProperty(fieldName)));
                 }
             }
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
